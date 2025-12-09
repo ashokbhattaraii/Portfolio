@@ -1,4 +1,5 @@
 import Expertise from "./Components/expertise";
+import Contact from "./Components/contact"
 export default function Home(){
   return (
     <>
@@ -29,6 +30,7 @@ export default function Home(){
 </div>
   </div>
     <Expertise/>
+    <Contact/>
   </>
   );
 }

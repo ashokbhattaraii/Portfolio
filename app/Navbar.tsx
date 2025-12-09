@@ -4,11 +4,11 @@ export default function navigation(){
             <p className="mr-auto ml-3 text-blue-600 text-3xl">Portfolio</p>
             <nav className=" mr-auto">
                 <ul className="flex  list-none text-white gap-x-10 text-lg">
-                     <li className=""><a href="/" className="hover:text-amber-500 transition-colors duration-200 ">Home</a></li>
-                    <li className=""><a href="#about-me" className="hover:text-amber-500 transition-colors duration-200 ">About</a></li>
+                     <li className=""><a href="/" className="hover:text-blue-700 transition-colors duration-200 ">Home</a></li>
+                    <li className=""><a href="#about-me" className="hover:text-blue-700 transition-colors duration-200 ">About</a></li>
                    
-                <li className="hover:text-amber-500"><a href="/Project">Projects</a></li>
-                <li className="hover:text-amber-500"><a href="/Contact">Contact</a></li>
+                <li className="hover:text-blue-700"><a href="/Project">Projects</a></li>
+                <li className="hover:text-blue-700"><a href="/Contact">Contact</a></li>
                 </ul>
             </nav>
         </header>
