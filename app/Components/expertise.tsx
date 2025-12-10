@@ -54,9 +54,5 @@ export default function Expertise() {
         </div>
     </div>
   </>;
-
- 
-            
-  
-                
+             
 }
