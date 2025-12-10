@@ -1,7 +1,7 @@
 export default function Contact() {
   return (
     <>
-      <div className=" flex flex-wrap max-w-4/5 gray-900 items-center m-auto text-white p-4 mb-10 relative shadow shadow-gray-700">
+      <div className=" flex flex-wrap max-w-4/5 gray-900 items-center m-auto text-white p-4 mb-10 relative shadow shadow-gray-700" id="contactArea">
         <h1 className="text-blue-700 font-bold text-2xl">Get In Touch</h1>
         <div className="flex flex-col justify-center  md:flex-row lg:flex-row">
           <p className="m-6">
@@ -63,9 +63,9 @@ export default function Contact() {
             </button>
           </div>
         </div>
-        <div className="bg-[url('/sumaid-pal-singh-bakshi-vq-A3vOlEr0-unsplash.jpg')] bg-cover w-full h-2/4 bottom-0 flex gap-50 md:absolute right-0">
+        <div className="bg-[url('/sumaid-pal-singh-bakshi-vq-A3vOlEr0-unsplash.jpg')] bg-cover w-full h-2/4 bottom-0 flex gap-50  md:absolute right-0">
           <div id="contactIndo">
-            <div id="details" className="mt-11">
+            <div id="details" className="mt-13">
               <div
                 id="email"
                 className="flex gap-5 items-center ml-6 mt-6 font-bold"
