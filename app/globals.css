@@ -1,6 +1,4 @@
- i/.,mnvcailwindcss";x 
-jkhbghl;'
-'
+@import "tailwindcss";
 
 :root {
   --background: #ffffff;
@@ -18,7 +16,6 @@ jkhbghl;'
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
- 
   }
 }
 
