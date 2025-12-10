@@ -111,8 +111,8 @@ export default function Contact() {
             className="absolute flex flex-col right-5 md:absolute z-100 md:bottom-6 md:right-1/2 md:flex gap-4 mt-3 md:flex-col "
           >
             <img src="./linkedin.svg" alt="linkedin" className="w-11 h-11 " />
-            <img src="./linkedin.svg" alt="linkedin" className="w-11 h-11 " />
-            <img src="./linkedin.svg" alt="linkedin" className="w-11 h-11 " />
+            <img src="./instagram (1).svg" alt="Instagram" className="w-11 h-11 " />
+            <img src="./youtube-icon.svg" alt="Youtube" className="w-11 h-11 " />
           </div>
         </div>
       </div>
