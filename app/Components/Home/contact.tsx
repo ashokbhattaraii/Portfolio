@@ -1,11 +1,11 @@
 "use client";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import Button from "../Resualble_Components/Button";
+import Button from "../../Resualble_Components/Button";
 import { error } from "console";
 
 export default function Contact() {
-  const [name, setName] = useState("");
+
 
   const {
     register,
