@@ -8,7 +8,7 @@ export default function navigation(){
                     <li className=""><a href="#about-me" className="hover:text-blue-700 transition-colors duration-200 ">About</a></li>
                    
                 <li className="hover:text-blue-700"><a href="/projects">Projects</a></li>
-                <li className="hover:text-blue-700"><a href="/blogs">Blogs</a></li>
+                <li className="hover:text-blue-700"><a href="/blog">Blogs</a></li>
                 <li className="hover:text-blue-700"><a href="#contactArea">Contact</a></li>
                 </ul>
             </nav>
