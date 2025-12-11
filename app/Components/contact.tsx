@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Button from "../Resualble_Components/Button";
+import { error } from "console";
 
 export default function Contact() {
   const [name, setName] = useState("");
@@ -9,9 +10,10 @@ export default function Contact() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: {errors}
   } = useForm();
 
+  
   const validationRules ={
     name :{
       required:"Please fill the name",
@@ -20,7 +22,7 @@ export default function Contact() {
         message:"Name must be of atleast 2 characters"
       }
     },
-     emailValidate: {
+     email: {
       required: "Invalid email format",
       pattern: {
         value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
@@ -28,9 +30,9 @@ export default function Contact() {
       }
     },
 
-    validateMessage :{
+    message :{
       required: "Enter your message",
-      minLenth:{
+      minLength:{
         value:5,
         message:"At least one line"
       }
@@ -40,9 +42,13 @@ export default function Contact() {
 
 
 
-  const onSubmit = (data)=>{
+  const onSubmit = (data:any)=>{
+    console.log(data)
     console.log(data.name)
-    alert("btn clicked")
+    
+    console.log(data.email)
+    console.log(data.message)
+    alert("Messsage sent successfully")
   }
 
   return (
@@ -65,7 +71,7 @@ export default function Contact() {
           </p>
 
           <form
-            onSubmit={onSubmit}
+            
             id="message-box"
             className="mx-auto p-5 bg-white rounded-2xl z-10 w-4/5"
           >
@@ -73,9 +79,11 @@ export default function Contact() {
             <div id="name" className="relative flex items-center mt-4">
               <input
                 type="text"
-                className="border rounded-2xl border-black text-black p-2 pl-9 outline-0 w-full placeholder:text-gray-700"
+                className={`border rounded-2xl border-black text-black p-2 pl-9 outline-0 w-full placeholder:text-gray-700  ${errors.name? 'border-red-500': 'border-black'}`}
                 placeholder="Enter your name"
-                {...register("email", validationRules.name)}
+               
+                {...register("name", validationRules.name)}
+               
               />
               <img
                 className="absolute bottom-2.2 left-1"
@@ -86,11 +94,12 @@ export default function Contact() {
               />
             </div>
 
-            <div id="name" className="relative flex items-center mt-4">
+            <div id="email" className="relative flex items-center mt-4">
               <input
                 type="text"
-                className="border rounded-2xl border-black text-black p-2 pl-9 outline-0 w-full placeholder:text-gray-700"
-                placeholder="Enter your name"
+                className={`border rounded-2xl border-black text-black p-2 pl-9 outline-0 w-full placeholder:text-gray-700 ${errors.email? 'border-red-500': 'border-black'}`}
+                placeholder="@gmail.com"
+                {...register("email", validationRules.email)}
               />
               <img
                 className="absolute bottom-2.2 left-1"
@@ -102,13 +111,13 @@ export default function Contact() {
             </div>
 
             <textarea
-              name=""
               id="user-message"
               placeholder="Type message here"
-              className="border rounded-2xl border-black  p-3 outline-0 w-full mt-4 text-black"
+              className={`border rounded-2xl border-black  p-3 outline-0 w-full mt-4 text-black ${errors.message? 'border-red-500': 'border-black'}`}
               rows={5}
+              {...register("message",validationRules.message)}
             ></textarea>
-            <Button variant="primary" className="w-full" type='submit'>
+            <Button variant="primary" className="w-full" type='submit' onClick={handleSubmit(onSubmit)}>
               Click Me
             </Button>
           </form>
