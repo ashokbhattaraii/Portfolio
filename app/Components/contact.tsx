@@ -1,4 +1,13 @@
+'use client'
+import { useState } from "react";
+import Button from '../Resualble_Components/Button'
+
+
 export default function Contact() {
+  const [name,setName] = useState('')
+  function showAlert(){
+    alert("Button Clicked")
+  }
   return (
     <>
       <div className=" flex flex-wrap max-w-4/5 gray-900 items-center m-auto text-white p-4 mb-10 relative shadow shadow-gray-700" id="contactArea">
@@ -57,11 +66,8 @@ export default function Contact() {
               className="border rounded-2xl border-black  p-3 outline-0 w-full mt-4 text-black"
               rows={5}
             ></textarea>
-
-            <button className="w-full bg-blue-700 text-center p-2 rounded-2xl text-2xl text-white font-bold">
-              Send
-            </button>
-          </div>
+              <Button variant='primary' className='w-full' onClick={()=>{showAlert()}}>Click Me</Button>
+            </div>
         </div>
         <div className="bg-[url('/sumaid-pal-singh-bakshi-vq-A3vOlEr0-unsplash.jpg')] bg-cover w-full h-2/4 bottom-0 flex gap-50  md:absolute right-0">
           <div id="contactIndo">
