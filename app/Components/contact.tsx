@@ -1,16 +1,56 @@
-'use client'
+"use client";
 import { useState } from "react";
-import Button from '../Resualble_Components/Button'
-
+import { useForm } from "react-hook-form";
+import Button from "../Resualble_Components/Button";
 
 export default function Contact() {
-  const [name,setName] = useState('')
-  function showAlert(){
-    alert("Button Clicked")
+  const [name, setName] = useState("");
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const validationRules ={
+    name :{
+      required:"Please fill the name",
+      minLength:{
+        value:2,
+        message:"Name must be of atleast 2 characters"
+      }
+    },
+     emailValidate: {
+      required: "Invalid email format",
+      pattern: {
+        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+            message: "Invalid email format.",
+      }
+    },
+
+    validateMessage :{
+      required: "Enter your message",
+      minLenth:{
+        value:5,
+        message:"At least one line"
+      }
+    }
+   
   }
+
+
+
+  const onSubmit = (data)=>{
+    console.log(data.name)
+    alert("btn clicked")
+  }
+
   return (
     <>
-      <div className=" flex flex-wrap max-w-4/5 gray-900 items-center m-auto text-white p-4 mb-10 relative shadow shadow-gray-700" id="contactArea">
+      <div
+        className=" flex flex-wrap max-w-4/5 gray-900 items-center m-auto text-white p-4 mb-10 relative shadow shadow-gray-700"
+        id="contactArea"
+      >
         <h1 className="text-blue-700 font-bold text-2xl">Get In Touch</h1>
         <div className="flex flex-col justify-center  md:flex-row lg:flex-row">
           <p className="m-6">
@@ -24,7 +64,8 @@ export default function Contact() {
             officiis voluptate
           </p>
 
-          <div
+          <form
+            onSubmit={onSubmit}
             id="message-box"
             className="mx-auto p-5 bg-white rounded-2xl z-10 w-4/5"
           >
@@ -34,6 +75,7 @@ export default function Contact() {
                 type="text"
                 className="border rounded-2xl border-black text-black p-2 pl-9 outline-0 w-full placeholder:text-gray-700"
                 placeholder="Enter your name"
+                {...register("email", validationRules.name)}
               />
               <img
                 className="absolute bottom-2.2 left-1"
@@ -66,8 +108,10 @@ export default function Contact() {
               className="border rounded-2xl border-black  p-3 outline-0 w-full mt-4 text-black"
               rows={5}
             ></textarea>
-              <Button variant='primary' className='w-full' onClick={()=>{showAlert()}}>Click Me</Button>
-            </div>
+            <Button variant="primary" className="w-full" type='submit'>
+              Click Me
+            </Button>
+          </form>
         </div>
         <div className="bg-[url('/sumaid-pal-singh-bakshi-vq-A3vOlEr0-unsplash.jpg')] bg-cover w-full h-2/4 bottom-0 flex gap-50  md:absolute right-0">
           <div id="contactIndo">
@@ -117,8 +161,16 @@ export default function Contact() {
             className="absolute flex flex-col right-5 md:absolute z-100 md:bottom-6 md:right-1/2 md:flex gap-4 mt-3 md:flex-col "
           >
             <img src="./linkedin.svg" alt="linkedin" className="w-11 h-11 " />
-            <img src="./instagram (1).svg" alt="Instagram" className="w-11 h-11 " />
-            <img src="./youtube-icon.svg" alt="Youtube" className="w-11 h-11 " />
+            <img
+              src="./instagram (1).svg"
+              alt="Instagram"
+              className="w-11 h-11 "
+            />
+            <img
+              src="./youtube-icon.svg"
+              alt="Youtube"
+              className="w-11 h-11 "
+            />
           </div>
         </div>
       </div>
