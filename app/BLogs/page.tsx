@@ -8,7 +8,7 @@ export default function Blogs(){
                     <img src="./sumaid-pal-singh-bakshi-vq-A3vOlEr0-unsplash.jpg" alt="testNoImage" className="h-full w-full"/>
                 </div>
                 <p id="blogDescription" className="p-2 ml-3">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fuga deserunt ab iure? Quibusdam
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit Hello. Fuga deserunt ab iure? Quibusdam
                 </p>
             </div>
 
