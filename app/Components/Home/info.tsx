@@ -1,3 +1,4 @@
+import Button from "@/app/Resualble_Components/Button";
 export default function Info() {
   return (
     <>
@@ -30,12 +31,12 @@ export default function Info() {
           </p>
         </div>
         <div className="flex gap-10 justify-between items-center mt-4">
-          <button className=" border-2 rounded-2xl p-2 bg-blue-700 text-black font-semibold transition duration-300 hover:bg-blue-800">
+          <Button className=" border-2  rounded-2xl p-2 bg-blue-700 text-black font-semibold transition duration-300 hover:bg-blue-800">
             View My Work
-          </button>
-          <button className="border-2 border-blue-700 p-2 rounded-2xl font-semibold transition duration-300 hover:bg-gray-950">
+          </Button>
+          <Button className="border-2 border-blue-700 p-2 rounded-2xl font-semibold transition duration-300 hover:bg-gray-950">
             Get in Touch
-          </button>
+          </Button>
         </div>
       </div>
     </>
