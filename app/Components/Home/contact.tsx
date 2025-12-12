@@ -6,7 +6,6 @@ import { error } from "console";
 
 export default function Contact() {
 
-
   const {
     register,
     handleSubmit,
