@@ -1,30 +1,97 @@
-export default function DetailedProjects(){
-    return <>
-        <div id="detailProjectDisplay" className="text-black ml-22 max-w-2/3 ">
-<h2 className="text-blue-700 font-bold">Projects</h2>
-<div id="detailedList" className="flex flex-wrap gap-8 text-blue-600">
-    <div id="project1" className="h-30 w-30 bg-gray-500 relative rounded-2xl  flex justify-center">
-        <p className="absolute -bottom-7 ">ToDo List</p>
-    </div>
+import Project from "./project";
+import { useForm } from "react-hook-form";
+4;
+import { useState } from "react";
+import Button from "../../Resualble_Components/Button";
+import { log } from "console";
+interface ProjectDetail {
+  name: string;
+  content: string;
+}
 
-    <div id="project2" className="h-30 w-30 bg-gray-500 rounded-2xl relative">
-        <p className="absolute -bottom-7 left-6">ToDo List</p>
-    </div>
+export default function DetailedProjects() {
+  const [ProjectList, ListProject] = useState<ProjectDetail[]>([]);
 
-    <div id="project3" className="h-30 w-30 bg-gray-500 relative rounded-2xl  flex justify-center">
-        <p className="absolute -bottom-7 ">ToDo List</p>
-    </div>
-    <div id="project4" className="h-30 w-30 bg-gray-500 relative rounded-2xl  flex justify-center">
-        <p className="absolute -bottom-7 ">ToDo List</p>
-    </div>
+  const [addForm, toogleAddForm] = useState(false);
+  const toogleForm = () => {
+    toogleAddForm(!addForm);
+  };
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm<ProjectDetail>();
 
-    <div id="AddProjects" className="h-30 w-30 border rounded-2xl relative flex justify-center">
-        <img width="30" height="30" src="https://img.icons8.com/android/24/1A1A1A/plus.png" alt="add" className="absolute top-[40%] "/>
-        <p className="absolute -bottom-7">Add</p>
-    </div>
-    
-</div>
+  const onSubmit = (data: ProjectDetail) => {
+    ListProject((prevProjects: any) => {
+      return [...prevProjects, data];
+    });
+
+    console.log(`New project added. Total projects: ${ProjectList.length + 1}`);
+    console.log(ProjectList[2]);
+  };
+  return (
+    <>
+      <div id="detailProjectDisplay" className="text-black ml-22 max-w-2/3 ">
+        <h2 className="text-blue-700 font-bold">Projects</h2>
+
+        <div id="detailedList" className="flex flex-wrap gap-8 text-blue-600">
+          <Project Projects={ProjectList} />
+          <div
+            id="AddProjects"
+            className=" h-30 w-30 border rounded-2xl relative flex justify-center"
+            onClick={toogleForm}
+          >
+            <img
+              width="30"
+              height="30"
+              src="https://img.icons8.com/android/24/1A1A1A/plus.png"
+              alt="add"
+              className="absolute top-[40%] "
+            />
+            <p className="absolute -bottom-7">Add</p>
+          </div>
         </div>
+      </div>
+      {addForm && (
+        <div
+          id="ProjectForm"
+          className={`absolute left-[40%]  bg-gray-700 w-80  rounded-2xl text-white shadow-xl shadow-gray-500 `}
+        >
+          <form className="flex flex-col p-4">
+            <h1 className="font-bold text-2xl mx-auto mb-4">Add Projects</h1>
+            <span>Name</span>
+            <input
+              type="text"
+              id="projectName"
+              className="border outline-0 pl-4 py-2 rounded-2xl my-3"
+              placeholder="Project Name"
+              {...register("name")}
+            />
+            <span>Content</span>
+            <textarea
+              id="content"
+              rows={6}
+              className="border outline-0 pl-4 py-2 rounded-2xl my-3"
+              {...register("content")}
+            />
+            <Button
+              variant="primary"
+              type="submit"
+              onClick={handleSubmit(onSubmit)}
+            >
+              Add Project
+            </Button>
+            <button
+              type="button"
+              onClick={toogleForm}
+              className="text-sm mt-2 text-red-300"
+            >
+              Cancel
+            </button>
+          </form>
+        </div>
+      )}
     </>
-
+  );
 }

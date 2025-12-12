@@ -5,50 +5,53 @@ import Button from "../../Resualble_Components/Button";
 import { error } from "console";
 
 export default function Contact() {
-
   const {
     register,
     handleSubmit,
-    formState: {errors}
+    formState: { errors },
   } = useForm();
 
-  
-  const validationRules ={
-    name :{
-      required:"Please fill the name",
-      minLength:{
-        value:2,
-        message:"Name must be of atleast 2 characters"
-      }
+  const validationRules = {
+    name: {
+      required: "Please fill the name",
+      minLength: {
+        value: 2,
+        message: "Name must be of atleast 2 characters",
+      },
     },
-     email: {
+    email: {
       required: "Invalid email format",
       pattern: {
         value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-            message: "Invalid email format.",
-      }
+        message: "Invalid email format.",
+      },
     },
 
-    message :{
+    message: {
       required: "Enter your message",
-      minLength:{
-        value:5,
-        message:"At least one line"
-      }
-    }
-   
-  }
+      minLength: {
+        value: 5,
+        message: "At least one line",
+      },
+    },
+  };
 
+  const ErrorMessage = ({ errors, fieldName }: any) => {
+    if (!errors) return null;
 
+    return (
+      <p className="text-red-700 text ml-4">{validationRules.name.required}</p>
+    );
+  };
 
-  const onSubmit = (data:any)=>{
-    console.log(data)
-    console.log(data.name)
-    
-    console.log(data.email)
-    console.log(data.message)
-    alert("Messsage sent successfully")
-  }
+  const onSubmit = (data: any) => {
+    console.log(data);
+    console.log(data.name);
+
+    console.log(data.email);
+    console.log(data.message);
+    alert("Messsage sent successfully");
+  };
 
   return (
     <>
@@ -70,53 +73,65 @@ export default function Contact() {
           </p>
 
           <form
-            
             id="message-box"
             className="mx-auto p-5 bg-white rounded-2xl z-10 w-4/5"
           >
             <h1 className="text-blue-700 font-bold text-2xl">Message</h1>
-            <div id="name" className="relative flex items-center mt-4">
+            <div id="name" className="relative flex  flex-col mt-4">
               <input
                 type="text"
-                className={`border rounded-2xl border-black text-black p-2 pl-9 outline-0 w-full placeholder:text-gray-700  ${errors.name? 'border-red-500': 'border-black'}`}
+                className={`border rounded-2xl border-black text-black p-2 pl-9 outline-0 w-full placeholder:text-gray-700  ${
+                  errors.name ? "border-red-500" : "border-black"
+                }`}
                 placeholder="Enter your name"
-               
                 {...register("name", validationRules.name)}
-               
               />
+
               <img
-                className="absolute bottom-2.2 left-1"
+                className="absolute top-1.5 left-1"
                 width="30"
                 height="30"
                 src="https://img.icons8.com/ios-filled/50/user-male-circle.png"
                 alt="user-male-circle"
               />
+              <ErrorMessage errors={errors.name} fieldName="name" />
             </div>
 
-            <div id="email" className="relative flex items-center mt-4">
+            <div id="email" className="relative flex flex-col mt-4">
               <input
                 type="text"
-                className={`border rounded-2xl border-black text-black p-2 pl-9 outline-0 w-full placeholder:text-gray-700 ${errors.email? 'border-red-500': 'border-black'}`}
+                className={`border rounded-2xl border-black text-black p-2 pl-9 outline-0 w-full placeholder:text-gray-700 ${
+                  errors.email ? "border-red-500" : "border-black"
+                }`}
                 placeholder="@gmail.com"
                 {...register("email", validationRules.email)}
               />
               <img
-                className="absolute bottom-2.2 left-1"
+                className="absolute top-1.5 left-1"
                 width="30"
                 height="30"
                 src="https://img.icons8.com/ios-filled/50/circled-envelope.png"
                 alt="user-email-circle"
               />
+              <ErrorMessage errors={errors.email} fieldName="email" />
             </div>
 
             <textarea
               id="user-message"
               placeholder="Type message here"
-              className={`border rounded-2xl border-black  p-3 outline-0 w-full mt-4 text-black ${errors.message? 'border-red-500': 'border-black'}`}
+              className={`border rounded-2xl border-black  p-3 outline-0 w-full mt-4 text-black ${
+                errors.message ? "border-red-500" : "border-black"
+              }`}
               rows={5}
-              {...register("message",validationRules.message)}
+              {...register("message", validationRules.message)}
             ></textarea>
-            <Button variant="primary" className="w-full" type='submit' onClick={handleSubmit(onSubmit)}>
+            <ErrorMessage errors={errors.name} fieldName="message" />
+            <Button
+              variant="primary"
+              className="w-full"
+              type="submit"
+              onClick={handleSubmit(onSubmit)}
+            >
               Click Me
             </Button>
           </form>
