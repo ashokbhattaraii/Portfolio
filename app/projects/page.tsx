@@ -8,6 +8,27 @@ interface ProjectsDetail {
   name: string;
   content: string;
 }
+const Projects = () => {
+  const [ProjectList, setProjectList] = useState<Projects[]>([]);
+
+  function addProject(newProjecct: Projects) {
+    setProjectList((prevProjects) => {
+      return [...prevProjects, newProjecct];
+    });
+  }
+  return (
+    <>
+      <div
+        id="projectContainer"
+        className="text-white relative top-6 flex w-full mx-auto"
+      >
+        <SideBar Projects={ProjectList} />
+
+        <DetailedProjects projects={ProjectList} onAddProject={addProject} />
+      </div>
+    </>
+  );
+};
 
 const Projects = () => {
   const [ProjectList, SetProjectList] = useState<ProjectsDetail[]>([]);

@@ -25,9 +25,9 @@ export default function Info() {
         </div>
         <div className="flex justify-center items-center my-3 w-120 p-4 ">
           <p className="text-gray-500">
-            I believe mastery is a journey, not a destination, staying fiercely
-            committed to growth. This approach guarantees thoughtful execution
-            and highly reliable code on every platform.
+            I believe mastery is a hello journey, not a destination, staying
+            fiercely committed to growth. This approach guarantees thoughtful
+            execution and highly reliable code on every platform.
           </p>
         </div>
         <div className="flex gap-10 justify-between items-center mt-4">
