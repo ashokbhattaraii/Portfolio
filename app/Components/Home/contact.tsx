@@ -36,14 +36,6 @@ export default function Contact() {
     },
   };
 
-  const ErrorMessage = ({ errors, fieldName }: any) => {
-    if (!errors) return null;
-
-    return (
-      <p className="text-red-700 text ml-4">{validationRules.name.required}</p>
-    );
-  };
-
   const onSubmit = (data: any) => {
     console.log(data);
     console.log(data.name);
@@ -62,14 +54,14 @@ export default function Contact() {
         <h1 className="text-blue-700 font-bold text-2xl">Get In Touch</h1>
         <div className="flex flex-col justify-center  md:flex-row lg:flex-row">
           <p className="m-6">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Reprehenderit quae possimus ea fuga animi culpa, natus neque odio
-            officiis voluptate
+            I'm always open to new opportunities, collaborations, and intriguing
+            challenges. Whether you have a project idea, a job offer, or just
+            want to discuss the latest in tech, I'd love to hear from you.
           </p>
           <p className="m-6">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Reprehenderit quae possimus ea fuga animi culpa, natus neque odio
-            officiis voluptate
+            The quickest way to start a conversation is through the message box
+            on the right. Alternatively, you can find my direct contact details
+            below, and I aim to respond within 24 hours. Let's connect!
           </p>
 
           <form
@@ -125,7 +117,6 @@ export default function Contact() {
               rows={5}
               {...register("message", validationRules.message)}
             ></textarea>
-            <ErrorMessage errors={errors.name} fieldName="message" />
             <Button
               variant="primary"
               className="w-full"
@@ -183,17 +174,13 @@ export default function Contact() {
             id="socialLinks"
             className="absolute flex flex-col right-5 md:absolute z-100 md:bottom-6 md:right-1/2 md:flex gap-4 mt-3 md:flex-col "
           >
-            <img src="./linkedin.svg" alt="linkedin" className="w-11 h-11 " />
+            <img src="./linkedin.svg" alt="linkedin" className="w-9 h-9 " />
             <img
               src="./instagram (1).svg"
               alt="Instagram"
-              className="w-11 h-11 "
+              className="w-9 h-9 "
             />
-            <img
-              src="./youtube-icon.svg"
-              alt="Youtube"
-              className="w-11 h-11 "
-            />
+            <img src="./youtube-icon.svg" alt="Youtube" className="w-9 h-9 " />
           </div>
         </div>
       </div>

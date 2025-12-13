@@ -1,42 +1,48 @@
-import Project from "./project";
-import { useForm } from "react-hook-form";
-4;
+"use client";
 import { useState } from "react";
+import Project from "./project";
 import Button from "../../Resualble_Components/Button";
-import { log } from "console";
+import { useForm } from "react-hook-form";
+
 interface ProjectDetail {
   name: string;
   content: string;
 }
-interface DetailedProjectsProps {
-  projects: ProjectDetail[];
+
+interface DetailedProjectProps {
+  Projects: ProjectDetail[];
   onAddProject: (newProject: ProjectDetail) => void;
 }
-export default function DetailedProjects({ projects, onAddProject }: any) {
-  const [addForm, toogleAddForm] = useState(false);
-  const toogleForm = () => {
-    toogleAddForm(!addForm);
-  };
+
+export default function DetailedProjects({
+  Projects,
+  onAddProject,
+}: DetailedProjectProps) {
   const {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm<ProjectDetail>();
+  } = useForm();
 
-  const onSubmit = (data: ProjectDetail) => {
+  const [isFormOpen, toogleForm] = useState(false);
+
+  function onClickAdd() {
+    toogleForm(!isFormOpen);
+  }
+  const onSubmit = (data: any) => {
     onAddProject(data);
+    toogleForm(false);
   };
   return (
     <>
       <div id="detailProjectDisplay" className="text-black ml-22 max-w-2/3 ">
         <h2 className="text-blue-700 font-bold">Projects</h2>
-
         <div id="detailedList" className="flex flex-wrap gap-8 text-blue-600">
-          <Project Projects={projects} />
+          <Project project={Projects} />
           <div
             id="AddProjects"
-            className=" h-30 w-30 border rounded-2xl relative flex justify-center"
-            onClick={toogleForm}
+            className="h-30 w-30 border rounded-2xl relative flex justify-center"
+            onClick={onClickAdd}
           >
             <img
               width="30"
@@ -49,48 +55,45 @@ export default function DetailedProjects({ projects, onAddProject }: any) {
           </div>
         </div>
       </div>
-      {addForm && (
+      {isFormOpen && (
         <div
-          id="overlayModal"
-          className="fixed inset-0 z-100 flex justify-center items-center"
+          id="overlayForm"
+          className="text-white  fixed inset-0 z-100 flex justify-center items-center"
         >
-          <div
-            id="ProjectForm"
-            className={`bg-gray-700 w-80  rounded-2xl text-white shadow-xl shadow-gray-500 `}
-          >
-            <form className="flex flex-col p-4">
-              <h1 className="font-bold text-2xl mx-auto mb-4">Add Projects</h1>
-              <span>Name</span>
-              <input
-                type="text"
-                id="projectName"
-                className="border outline-0 pl-4 py-2 rounded-2xl my-3"
-                placeholder="Project Name"
-                {...register("name")}
-              />
-              <span>Content</span>
-              <textarea
-                id="content"
-                rows={6}
-                className="border outline-0 pl-4 py-2 rounded-2xl my-3"
-                {...register("content")}
-              />
-              <Button
-                variant="primary"
-                type="submit"
-                onClick={handleSubmit(onSubmit)}
-              >
-                Add Project
-              </Button>
-              <button
-                type="button"
-                onClick={toogleForm}
-                className="text-sm mt-2 text-red-300"
-              >
-                Cancel
-              </button>
-            </form>
-          </div>
+          <form className="flex flex-col bg-gray-700 rounded-2xl gap-3 w-80 p-3">
+            <h1 className="text-center text-blue-700 font-black text-2xl">
+              Add Project
+            </h1>
+            <span>Name</span>
+            <input
+              type="text"
+              placeholder="Project Name"
+              className="border py-3 rounded-2xl pl-2 outline-0"
+              {...register("name")}
+            />
+            <span>Content</span>
+            <textarea
+              id="projectContent"
+              rows={6}
+              className="border py-3 rounded-2xl pl-2 outline-0"
+            ></textarea>
+            <Button
+              varient="primary"
+              type="submit"
+              onClick={handleSubmit(onSubmit)}
+            >
+              Add Project
+            </Button>
+            <Button
+              variant="danger"
+              className=""
+              onClick={() => {
+                toogleForm(false);
+              }}
+            >
+              Cancel
+            </Button>
+          </form>
         </div>
       )}
     </>

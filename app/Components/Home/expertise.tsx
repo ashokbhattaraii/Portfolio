@@ -1,58 +1,56 @@
+import Card from "../Card/card";
 
 export default function Expertise() {
-  return <>
-    <div className="flex flex-col justify-between items-center mb-8" id="expertise-section">
+  return (
+    <>
+      <div
+        className="flex flex-col justify-between items-center mb-8"
+        id="expertise-section"
+      >
         <h2 className="text-blue-700 font-bold">Expertise</h2>
-        <p className="text-3xl font-extrabold mt-3 mb-6 md:text-4xl lg:text-5xl">Skills and Technologies</p>
-        <div id="skills-card" className="flex flex-wrap justify-evenly gap-6">
-        <div className="w-55 rounded-3xl  bg-gray-950 ">
-        <h2 className="mt-5 ml-5 text-blue-700 font-bold ">Frontend</h2>
-            <div className="flex flex-wrap p-4 gap-2 ">
-                <span className=" w-20 border border-black rounded-2xl p-2 px-4 bg-black text-center">React</span>
-                <span className=" w-20 border border-black rounded-2xl p-2 px-4 bg-black text-center">Next js</span>
-                <span className=" w-20 border border-black rounded-2xl p-2 px-4 bg-black text-center">Html</span>
-                <span className=" w-20 border border-black rounded-2xl p-2 px-4 bg-black text-center">CSS</span>
-                <span className=" w-27 border border-black rounded-2xl p-2 px-4 bg-black text-center">Javascript</span>
-            </div> 
+        <p className="text-3xl font-extrabold mt-3 mb-6 md:text-4xl lg:text-5xl">
+          Skills and Technologies
+        </p>
+        <div
+          id="CardContainer"
+          className="flex flex-col lg:flex-row items-stretch justify-center gap-6 px-4"
+        >
+          <Card
+            title="Frontend"
+            skills={[
+              "React",
+              "Next.js",
+              "TypeScript",
+              "Tailwind CSS",
+              "HTML",
+              "CSS",
+            ]}
+          ></Card>
+
+          <Card
+            title="Testing & QA"
+            skills={[
+              "Playwright",
+              "Cypress",
+              "Jest",
+              "Postman",
+              "JMeter",
+              "OWASP ZAP",
+            ]}
+          ></Card>
+          <Card
+            title="Other Skills"
+            skills={[
+              "Problem Solving",
+              "Debugging",
+              "Agile / Scrum",
+              "API Design",
+              "Performance Optimization",
+              "Code Review",
+            ]}
+          ></Card>
         </div>
-         <div>
-           <div className="w-55 rounded-3xl  bg-gray-950 ">
-        <h2 className="pt-5 ml-5 text-blue-700 font-bold ">Frontend</h2>
-            <div className="flex flex-wrap p-4 gap-2 ">
-                <span className=" w-20 border border-black rounded-2xl p-2 px-4 bg-black text-center">React</span>
-                <span className=" w-20 border border-black rounded-2xl p-2 px-4 bg-black text-center">Next js</span>
-                <span className=" w-20 border border-black rounded-2xl p-2 px-4 bg-black text-center">Html</span>
-                <span className=" w-20 border border-black rounded-2xl p-2 px-4 bg-black text-center">CSS</span>
-                <span className=" w-27 border border-black rounded-2xl p-2 px-4 bg-black text-center">Javascript</span>
-            </div> 
-        </div>
-        </div>
-         <div>
-           <div className="w-55 rounded-3xl  bg-gray-950 ">
-        <h2 className="pt-5 ml-5 text-blue-700 font-bold ">Frontend</h2>
-            <div className="flex flex-wrap p-4 gap-2 ">
-                <span className=" w-20 border border-black rounded-2xl p-2 px-4 bg-black text-center">React</span>
-                <span className=" w-20 border border-black rounded-2xl p-2 px-4 bg-black text-center">Next js</span>
-                <span className=" w-20 border border-black rounded-2xl p-2 px-4 bg-black text-center">Html</span>
-                <span className=" w-20 border border-black rounded-2xl p-2 px-4 bg-black text-center">CSS</span>
-                <span className=" w-27 border border-black rounded-2xl p-2 px-4 bg-black text-center">Javascript</span>
-            </div> 
-        </div>
-        </div>
-         <div>
-           <div className="w-55 rounded-3xl  bg-gray-950 ">
-        <h2 className="pt-5 ml-5 text-blue-700 font-bold ">Frontend</h2>
-            <div className="flex flex-wrap p-4 gap-2 ">
-                <span className=" w-20 border border-black rounded-2xl p-2 px-4 bg-black text-center">React</span>
-                <span className=" w-20 border border-black rounded-2xl p-2 px-4 bg-black text-center">Next js</span>
-                <span className=" w-20 border border-black rounded-2xl p-2 px-4 bg-black text-center">Html</span>
-                <span className=" w-20 border border-black rounded-2xl p-2 px-4 bg-black text-center">CSS</span>
-                <span className=" w-27 border border-black rounded-2xl p-2 px-4 bg-black text-center">Javascript</span>
-            </div> 
-        </div>
-        </div>
-        </div>
-    </div>
-  </>;
-             
+      </div>
+    </>
+  );
 }

@@ -1,14 +1,8 @@
-"use client";
 import Button from "@/app/Resualble_Components/Button";
-interface ProjectDetail {
-  name: string;
-  content: string;
-}
 
-interface SideBarProps {
-  Projects: ProjectDetail[];
-}
-export default function SideBar({ Projects }: SideBarProps) {
+export default function SideBar({ Projects }: any) {
+  let lengthOfArray = Projects.length;
+  const maxDisplay = 5;
   return (
     <>
       <div
@@ -18,16 +12,18 @@ export default function SideBar({ Projects }: SideBarProps) {
         <h2 className="text-blue-700 font-bold">PROJECTS</h2>
         <div id="lists" className="ml-6 mt-6">
           <ul className="">
-            {Projects.map((project, index) => (
-              <li
-                key={index}
-                className="py-1 cursor-pointer hover:text-blue-400"
-              >
-                {project.name}
-              </li>
-            ))}
+            {Projects.map((p: any, index: any) => {
+              return (
+                <div key={index} className="flex gap-2">
+                  <span>{index + 1}. </span>
+                  <li key={index}>{p.name}</li>
+                </div>
+              );
+            })}
+          </ul>
+          {lengthOfArray > maxDisplay && (
             <button className="flex items-center gap-2 text-[12px] ml-6 text-blue-700">
-              View all{" "}
+              View all
               <span>
                 <img
                   width="13"
@@ -37,8 +33,11 @@ export default function SideBar({ Projects }: SideBarProps) {
                 />
               </span>
             </button>
-          </ul>
-          <Button variant="primary" className="w-full mt-30 ">
+          )}
+          <Button
+            variant="primary"
+            className="w-3/4 mt-30 absolute bottom-2 right-2"
+          >
             Hide
           </Button>
         </div>
