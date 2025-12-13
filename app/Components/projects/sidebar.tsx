@@ -1,5 +1,14 @@
+"use client";
 import Button from "@/app/Resualble_Components/Button";
-export default function SideBar({ children, name, onClick }: any) {
+interface ProjectDetail {
+  name: string;
+  content: string;
+}
+
+interface SideBarProps {
+  Projects: ProjectDetail[];
+}
+export default function SideBar({ Projects }: SideBarProps) {
   return (
     <>
       <div
@@ -9,11 +18,14 @@ export default function SideBar({ children, name, onClick }: any) {
         <h2 className="text-blue-700 font-bold">PROJECTS</h2>
         <div id="lists" className="ml-6 mt-6">
           <ul className="">
-            <li className="pb-4"></li>
-            <li className="pb-4">Todo List</li>
-            <li className="pb-4">Todo List</li>
-            <li className="pb-4">Todo List</li>
-            <li className="pb-4">Todo List</li>
+            {Projects.map((project, index) => (
+              <li
+                key={index}
+                className="py-1 cursor-pointer hover:text-blue-400"
+              >
+                {project.name}
+              </li>
+            ))}
             <button className="flex items-center gap-2 text-[12px] ml-6 text-blue-700">
               View all{" "}
               <span>

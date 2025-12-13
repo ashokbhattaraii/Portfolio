@@ -8,10 +8,11 @@ interface ProjectDetail {
   name: string;
   content: string;
 }
-
-export default function DetailedProjects() {
-  const [ProjectList, ListProject] = useState<ProjectDetail[]>([]);
-
+interface DetailedProjectsProps {
+  projects: ProjectDetail[];
+  onAddProject: (newProject: ProjectDetail) => void;
+}
+export default function DetailedProjects({ projects, onAddProject }: any) {
   const [addForm, toogleAddForm] = useState(false);
   const toogleForm = () => {
     toogleAddForm(!addForm);
@@ -23,12 +24,7 @@ export default function DetailedProjects() {
   } = useForm<ProjectDetail>();
 
   const onSubmit = (data: ProjectDetail) => {
-    ListProject((prevProjects: any) => {
-      return [...prevProjects, data];
-    });
-
-    console.log(`New project added. Total projects: ${ProjectList.length + 1}`);
-    console.log(ProjectList[2]);
+    onAddProject(data);
   };
   return (
     <>
@@ -36,7 +32,7 @@ export default function DetailedProjects() {
         <h2 className="text-blue-700 font-bold">Projects</h2>
 
         <div id="detailedList" className="flex flex-wrap gap-8 text-blue-600">
-          <Project Projects={ProjectList} />
+          <Project Projects={projects} />
           <div
             id="AddProjects"
             className=" h-30 w-30 border rounded-2xl relative flex justify-center"

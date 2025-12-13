@@ -1,14 +1,17 @@
 "use client";
+interface ProjectDetail {
+  name: string;
+  content: string;
+}
 
-export default function Project({
-  children,
-  Projects,
-
-  onClick,
-}: any) {
+// 🛑 NEW PROPS INTERFACE
+interface SideBarProps {
+  Projects: ProjectDetail[];
+}
+export default function Project({ Projects }: SideBarProps) {
   return (
     <>
-      {Projects.map((project: any, index: any) => {
+      {Projects.map((project, index) => {
         return (
           <div
             key={index}
