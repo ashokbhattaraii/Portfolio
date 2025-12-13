@@ -14,7 +14,7 @@ export default function SideBar({ Projects }: any) {
           <ul className="">
             {Projects.map((p: any, index: any) => {
               return (
-                <div className="flex gap-2">
+                <div key={index} className="flex gap-2">
                   <span>{index + 1}. </span>
                   <li key={index}>{p.name}</li>
                 </div>
