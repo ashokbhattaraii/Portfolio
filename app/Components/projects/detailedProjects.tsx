@@ -55,41 +55,46 @@ export default function DetailedProjects() {
       </div>
       {addForm && (
         <div
-          id="ProjectForm"
-          className={`absolute left-[40%]  bg-gray-700 w-80  rounded-2xl text-white shadow-xl shadow-gray-500 `}
+          id="overlayModal"
+          className="fixed inset-0 z-100 flex justify-center items-center"
         >
-          <form className="flex flex-col p-4">
-            <h1 className="font-bold text-2xl mx-auto mb-4">Add Projects</h1>
-            <span>Name</span>
-            <input
-              type="text"
-              id="projectName"
-              className="border outline-0 pl-4 py-2 rounded-2xl my-3"
-              placeholder="Project Name"
-              {...register("name")}
-            />
-            <span>Content</span>
-            <textarea
-              id="content"
-              rows={6}
-              className="border outline-0 pl-4 py-2 rounded-2xl my-3"
-              {...register("content")}
-            />
-            <Button
-              variant="primary"
-              type="submit"
-              onClick={handleSubmit(onSubmit)}
-            >
-              Add Project
-            </Button>
-            <button
-              type="button"
-              onClick={toogleForm}
-              className="text-sm mt-2 text-red-300"
-            >
-              Cancel
-            </button>
-          </form>
+          <div
+            id="ProjectForm"
+            className={`bg-gray-700 w-80  rounded-2xl text-white shadow-xl shadow-gray-500 `}
+          >
+            <form className="flex flex-col p-4">
+              <h1 className="font-bold text-2xl mx-auto mb-4">Add Projects</h1>
+              <span>Name</span>
+              <input
+                type="text"
+                id="projectName"
+                className="border outline-0 pl-4 py-2 rounded-2xl my-3"
+                placeholder="Project Name"
+                {...register("name")}
+              />
+              <span>Content</span>
+              <textarea
+                id="content"
+                rows={6}
+                className="border outline-0 pl-4 py-2 rounded-2xl my-3"
+                {...register("content")}
+              />
+              <Button
+                variant="primary"
+                type="submit"
+                onClick={handleSubmit(onSubmit)}
+              >
+                Add Project
+              </Button>
+              <button
+                type="button"
+                onClick={toogleForm}
+                className="text-sm mt-2 text-red-300"
+              >
+                Cancel
+              </button>
+            </form>
+          </div>
         </div>
       )}
     </>
