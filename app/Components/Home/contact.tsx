@@ -69,7 +69,7 @@ export default function Contact() {
             className="mx-auto p-5 bg-white rounded-2xl z-10 w-4/5"
           >
             <h1 className="text-blue-700 font-bold text-2xl">Message</h1>
-            <div id="name" className="relative flex items-center mt-4">
+            <div id="name" className="relative flex  flex-col mt-4">
               <input
                 type="text"
                 className={`border rounded-2xl border-black text-black p-2 pl-9 outline-0 w-full placeholder:text-gray-700  ${
@@ -78,16 +78,18 @@ export default function Contact() {
                 placeholder="Enter your name"
                 {...register("name", validationRules.name)}
               />
+
               <img
-                className="absolute bottom-2.2 left-1"
+                className="absolute top-1.5 left-1"
                 width="30"
                 height="30"
                 src="https://img.icons8.com/ios-filled/50/user-male-circle.png"
                 alt="user-male-circle"
               />
+              <ErrorMessage errors={errors.name} fieldName="name" />
             </div>
 
-            <div id="email" className="relative flex items-center mt-4">
+            <div id="email" className="relative flex flex-col mt-4">
               <input
                 type="text"
                 className={`border rounded-2xl border-black text-black p-2 pl-9 outline-0 w-full placeholder:text-gray-700 ${
@@ -97,12 +99,13 @@ export default function Contact() {
                 {...register("email", validationRules.email)}
               />
               <img
-                className="absolute bottom-2.2 left-1"
+                className="absolute top-1.5 left-1"
                 width="30"
                 height="30"
                 src="https://img.icons8.com/ios-filled/50/circled-envelope.png"
                 alt="user-email-circle"
               />
+              <ErrorMessage errors={errors.email} fieldName="email" />
             </div>
 
             <textarea
