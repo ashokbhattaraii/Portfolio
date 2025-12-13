@@ -5,50 +5,45 @@ import Button from "../../Resualble_Components/Button";
 import { error } from "console";
 
 export default function Contact() {
-
   const {
     register,
     handleSubmit,
-    formState: {errors}
+    formState: { errors },
   } = useForm();
 
-  
-  const validationRules ={
-    name :{
-      required:"Please fill the name",
-      minLength:{
-        value:2,
-        message:"Name must be of atleast 2 characters"
-      }
+  const validationRules = {
+    name: {
+      required: "Please fill the name",
+      minLength: {
+        value: 2,
+        message: "Name must be of atleast 2 characters",
+      },
     },
-     email: {
+    email: {
       required: "Invalid email format",
       pattern: {
         value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-            message: "Invalid email format.",
-      }
+        message: "Invalid email format.",
+      },
     },
 
-    message :{
+    message: {
       required: "Enter your message",
-      minLength:{
-        value:5,
-        message:"At least one line"
-      }
-    }
-   
-  }
+      minLength: {
+        value: 5,
+        message: "At least one line",
+      },
+    },
+  };
 
+  const onSubmit = (data: any) => {
+    console.log(data);
+    console.log(data.name);
 
-
-  const onSubmit = (data:any)=>{
-    console.log(data)
-    console.log(data.name)
-    
-    console.log(data.email)
-    console.log(data.message)
-    alert("Messsage sent successfully")
-  }
+    console.log(data.email);
+    console.log(data.message);
+    alert("Messsage sent successfully");
+  };
 
   return (
     <>
@@ -59,18 +54,17 @@ export default function Contact() {
         <h1 className="text-blue-700 font-bold text-2xl">Get In Touch</h1>
         <div className="flex flex-col justify-center  md:flex-row lg:flex-row">
           <p className="m-6">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Reprehenderit quae possimus ea fuga animi culpa, natus neque odio
-            officiis voluptate
+            I'm always open to new opportunities, collaborations, and intriguing
+            challenges. Whether you have a project idea, a job offer, or just
+            want to discuss the latest in tech, I'd love to hear from you.
           </p>
           <p className="m-6">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Reprehenderit quae possimus ea fuga animi culpa, natus neque odio
-            officiis voluptate
+            The quickest way to start a conversation is through the message box
+            on the right. Alternatively, you can find my direct contact details
+            below, and I aim to respond within 24 hours. Let's connect!
           </p>
 
           <form
-            
             id="message-box"
             className="mx-auto p-5 bg-white rounded-2xl z-10 w-4/5"
           >
@@ -78,11 +72,11 @@ export default function Contact() {
             <div id="name" className="relative flex items-center mt-4">
               <input
                 type="text"
-                className={`border rounded-2xl border-black text-black p-2 pl-9 outline-0 w-full placeholder:text-gray-700  ${errors.name? 'border-red-500': 'border-black'}`}
+                className={`border rounded-2xl border-black text-black p-2 pl-9 outline-0 w-full placeholder:text-gray-700  ${
+                  errors.name ? "border-red-500" : "border-black"
+                }`}
                 placeholder="Enter your name"
-               
                 {...register("name", validationRules.name)}
-               
               />
               <img
                 className="absolute bottom-2.2 left-1"
@@ -96,7 +90,9 @@ export default function Contact() {
             <div id="email" className="relative flex items-center mt-4">
               <input
                 type="text"
-                className={`border rounded-2xl border-black text-black p-2 pl-9 outline-0 w-full placeholder:text-gray-700 ${errors.email? 'border-red-500': 'border-black'}`}
+                className={`border rounded-2xl border-black text-black p-2 pl-9 outline-0 w-full placeholder:text-gray-700 ${
+                  errors.email ? "border-red-500" : "border-black"
+                }`}
                 placeholder="@gmail.com"
                 {...register("email", validationRules.email)}
               />
@@ -112,11 +108,18 @@ export default function Contact() {
             <textarea
               id="user-message"
               placeholder="Type message here"
-              className={`border rounded-2xl border-black  p-3 outline-0 w-full mt-4 text-black ${errors.message? 'border-red-500': 'border-black'}`}
+              className={`border rounded-2xl border-black  p-3 outline-0 w-full mt-4 text-black ${
+                errors.message ? "border-red-500" : "border-black"
+              }`}
               rows={5}
-              {...register("message",validationRules.message)}
+              {...register("message", validationRules.message)}
             ></textarea>
-            <Button variant="primary" className="w-full" type='submit' onClick={handleSubmit(onSubmit)}>
+            <Button
+              variant="primary"
+              className="w-full"
+              type="submit"
+              onClick={handleSubmit(onSubmit)}
+            >
               Click Me
             </Button>
           </form>
@@ -168,17 +171,13 @@ export default function Contact() {
             id="socialLinks"
             className="absolute flex flex-col right-5 md:absolute z-100 md:bottom-6 md:right-1/2 md:flex gap-4 mt-3 md:flex-col "
           >
-            <img src="./linkedin.svg" alt="linkedin" className="w-11 h-11 " />
+            <img src="./linkedin.svg" alt="linkedin" className="w-9 h-9 " />
             <img
               src="./instagram (1).svg"
               alt="Instagram"
-              className="w-11 h-11 "
+              className="w-9 h-9 "
             />
-            <img
-              src="./youtube-icon.svg"
-              alt="Youtube"
-              className="w-11 h-11 "
-            />
+            <img src="./youtube-icon.svg" alt="Youtube" className="w-9 h-9 " />
           </div>
         </div>
       </div>
